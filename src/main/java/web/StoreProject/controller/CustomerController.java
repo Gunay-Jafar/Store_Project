@@ -1,26 +1,28 @@
 package web.StoreProject.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import web.StoreProject.entity.Customer;
 import web.StoreProject.service.CustomerService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/customer")
 public class CustomerController {
 
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
+    @GetMapping("/{id}")
+    public Customer readById(@PathVariable Integer id) {
+        return customerService.readById(id);
+    }
 
-    @PostMapping("/create")
-    public void create(@RequestBody Customer customer) {
-
+    @GetMapping("/readAll")
+    public List<Customer> readAll() {
+        return customerService.readAll();
     }
 }

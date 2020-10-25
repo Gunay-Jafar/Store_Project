@@ -1,4 +1,4 @@
 package web.StoreProject.service;
 
-public class ProductService {
+public interface ProductService {
 }

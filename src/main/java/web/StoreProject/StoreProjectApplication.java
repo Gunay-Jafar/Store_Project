@@ -17,11 +17,6 @@ public class StoreProjectApplication  implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        Customer customer=new Customer();
-        customer.setFullName("Gunay Ceferli");
-        customer.setEmail("cafarligunay@gmail.com");
-        customer.setPassword("12345");
-        customer.setPhone("0505505050");
-        
+
     }
 }

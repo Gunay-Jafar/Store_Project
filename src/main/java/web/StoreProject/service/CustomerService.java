@@ -10,4 +10,10 @@ public interface CustomerService {
     Customer readById(Integer id);
 
     List<Customer> readAll();
+
+    void create(Customer customer);
+
+    void delete(Integer id);
+
+    void update(Integer id,Customer customer);
 }

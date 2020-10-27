@@ -25,4 +25,19 @@ public class CustomerController {
     public List<Customer> readAll() {
         return customerService.readAll();
     }
+
+    @PostMapping("/create")
+    public void create(@RequestBody Customer customer){
+        customerService.create(customer);
+    }
+
+    @PostMapping("/delete/{id}")
+    public void delete(@PathVariable Integer id){
+        customerService.delete(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public void update(@PathVariable Integer id,@RequestBody Customer customer){
+        customerService.update(id,customer);
+    }
 }

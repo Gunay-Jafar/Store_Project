@@ -17,13 +17,13 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public Customer readById(@PathVariable Integer id) {
-        return customerService.readById(id);
+    public Customer findById(@PathVariable Integer id) {
+        return customerService.findById(id);
     }
 
-    @GetMapping("/readAll")
-    public List<Customer> readAll() {
-        return customerService.readAll();
+    @GetMapping("/findAll")
+    public List<Customer> findAll() {
+        return customerService.findAll();
     }
 
     @PostMapping("/create")
@@ -36,7 +36,7 @@ public class CustomerController {
         customerService.delete(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PostMapping("/update/{id}")
     public void update(@PathVariable Integer id,@RequestBody Customer customer){
         customerService.update(id,customer);
     }

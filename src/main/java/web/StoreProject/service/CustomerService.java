@@ -7,13 +7,13 @@ import java.util.List;
 
 @Service
 public interface CustomerService {
-    Customer readById(Integer id);
+    Customer findById(Integer id);
 
-    List<Customer> readAll();
+    List<Customer> findAll();
 
     void create(Customer customer);
 
-    void delete(Integer id);
+    void update(Integer id, Customer customer);
 
-    void update(Integer id,Customer customer);
+    void delete(Integer id);
 }

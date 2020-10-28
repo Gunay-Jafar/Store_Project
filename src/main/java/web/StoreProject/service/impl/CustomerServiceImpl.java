@@ -17,7 +17,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer readById(Integer id) {
+    public Customer findById(Integer id) {
         Customer customer = null;
         try {
             customer = customerRepository.findById(id).get();
@@ -29,7 +29,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> readAll() {
+    public List<Customer> findAll() {
         return customerRepository.findAll();
     }
 
@@ -39,19 +39,20 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(Integer id) {
-        Customer customer = readById(id);
-        if (customer != null)
-            customerRepository.delete(customer);
-    }
-
-    @Override
     public void update(Integer id, Customer customer) {
-        Customer oldCustomer = readById(id);
+        Customer oldCustomer = findById(id);
         oldCustomer.setFullName(customer.getFullName());
         oldCustomer.setPhone(customer.getPhone());
         oldCustomer.setPassword(customer.getPassword());
         oldCustomer.setEmail(customer.getEmail());
         customerRepository.save(oldCustomer);
     }
+
+    @Override
+    public void delete(Integer id) {
+        Customer customer = findById(id);
+        if (customer != null)
+            customerRepository.delete(customer);
+    }
+
 }

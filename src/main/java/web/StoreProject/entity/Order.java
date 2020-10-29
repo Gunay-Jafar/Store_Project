@@ -1,69 +1,29 @@
 package web.StoreProject.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+import javax.persistence.*;
 import java.util.Date;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Data
 @Entity(name = "orders")
 public class Order {
-    public Order() {
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int product_id;
-    private int customer_id;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    private Product product;
+    @JoinColumn(name = "customer_id")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Customer customer;
     private Date date;
 
-    public Order(int id, int product_id, int customer_id, Date date) {
-        this.id = id;
-        this.product_id = product_id;
-        this.customer_id = customer_id;
-        this.date = date;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getProduct_id() {
-        return product_id;
-    }
-
-    public void setProduct_id(int product_id) {
-        this.product_id = product_id;
-    }
-
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", product_id=" + product_id +
-                ", customer_id=" + customer_id +
-                ", date=" + date +
-                '}';
-    }
 }
+

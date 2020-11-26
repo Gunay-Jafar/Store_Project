@@ -16,6 +16,7 @@ import javax.persistence.Id;
 @Data
 @ToString
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
